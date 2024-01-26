@@ -1,0 +1,17 @@
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body}, '/static/images/arr-plan-training.jpg', 'mon titre', 'monosutitlre')}">
+
+
+<div>
+    <h2>Delete Training</h2>
+
+    <p>Are you sure you want to delete the training "<span th:text="${training.name}"></span>"?</p>
+
+    <form th:action="@{'/training/' + ${training.id}}" method="post">
+        <input type="hidden" name="_method" value="DELETE"/>
+        <button type="submit">Confirm Delete</button>
+    </form>
+</div>
+
+</body>
+</html>

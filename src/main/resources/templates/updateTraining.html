@@ -1,0 +1,28 @@
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body}, '/static/images/arr-plan-training.jpg', 'mon titre', 'monosutitlre')}">
+
+<body>
+
+<div>
+    <h2>Update Training</h2>
+
+    <form th:action="@{'/training/' + ${training.id}}" method="post">
+        <input type="hidden" name="_method" value="PUT"/>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" th:value="${training.name}" required/>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" th:text="${training.description}"></textarea>
+
+        <label for="category">Category:</label>
+        <select id="category" name="category.id" th:field="${training.category.id}" required>
+            <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+        </select>
+
+        <button type="submit">Update Training</button>
+    </form>
+</div>
+
+</body>
+</html>

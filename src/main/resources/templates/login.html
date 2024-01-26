@@ -1,0 +1,108 @@
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body}, '/static/images/fill7.jpg', 'Compte Adelium', 'Espace sécurisé')}">
+<body>
+
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" th:fragment="header">-->
+<!--    <div class="container-fluid">-->
+<!--        <a class="navbar-brand" th:href="@{/}">Système d'inscription et de connexion</a>-->
+<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--    </div>-->
+<!--</nav>-->
+<!--<br />-->
+<!--<br />-->
+<!--<br />-->
+
+<div class="container p-5 ">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div th:if="${param.error}">
+                <div class="alert alert-danger">E-mail et mot de passe invalides.</div>
+            </div>
+            <div th:if="${param.logout}">
+                <div class="alert alert-success">
+                    Vous avez été déconnecté.</div>
+            </div>
+            <div class="card divColor p-5 ">
+                <div class="card-header">
+                    <h3 class="text-center text-primary fw-bold p-3">Formulaire de connexion</h3>
+                </div>
+                <div class="card-body divColor">
+                    <form
+                            method="post"
+                            th:action="@{/login}"
+                            class="form-horizontal"
+                            role="form"
+                    >
+                        <div class="mb-3">
+                            <label for="username" class="control-label">Email *</label>
+                            <input type="text"
+                                   id="username"
+                                   name="username"
+                                   class="form-control"
+                                   placeholder="Email"
+                            />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="control-label">Mot de passe *</label>
+                            <input type="password"
+                                   id="password"
+                                   name="password"
+                                   class="form-control"
+                                   placeholder="Mot de passe"
+                            />
+                        </div>
+
+                        <div class=" container  bg-primary text-center">
+                            <button type="submit" class="btn btn-primary m-5>">Connexion</button>
+                        </div>
+                        <div class="container text-center p-4">
+                            <span> Premiére connexion ?
+                            <a th:href="@{/register}"> Inscrivez-vous ici</a>
+                             </span>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" lang="fr">-->
+<!--<head>-->
+<!--    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>-->
+
+<!--    <title>Spring Security Example </title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div th:if="${param.error}">-->
+<!--    Invalid username and password.-->
+<!--</div>-->
+<!--<div th:if="${param.logout}">-->
+<!--    You have been logged out.-->
+<!--</div>-->
+
+<!--<form th:action="@{/login}" method="post">-->
+<!--    <div><label> User Name : <input type="text" name="username"/> </label></div>-->
+<!--    <div><label> Password: <input type="password" name="password"/> </label></div>-->
+<!--    <div><input type="submit" value="Sign In"/></div>-->
+<!--</form>-->
+
+<!--</body>-->
+<!--</html>-->

@@ -1,0 +1,94 @@
+
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body}, '/static/images/fill7.jpg', 'Compte Adelium', 'Espace sécurisé')}">
+<body>
+
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" th:fragment="header">-->
+<!--    <div class="container-fluid">-->
+<!--        <a class="navbar-brand" th:href="@{/}">Registration and Login System</a>-->
+<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--    </div>-->
+<!--</nav>-->
+<!--<br />-->
+<!--<br />-->
+<!--<br />-->
+<div class="container">
+    <div class="row col-md-8 offset-md-2">
+        <div class="card">
+            <div th:if="${param.success}">
+                <div class="alert alert-info">Vous vous êtes inscrit avec succès !</div>
+            </div>
+            <div class="card-header divColor">
+                <h2 class="text-center">Inscription</h2>
+            </div>
+            <div class="card-body">
+                <form method="post" role="form" th:action="@{/register/save}" th:object="${user}">
+
+                    <div class="form-group mb-3">
+                        <label class="form-label">Prénom</label>
+                        <input class="form-control"
+                               id="firstName"
+                               name="firstName"
+                               placeholder="Entrer votre Prénom"
+                               th:field="*{firstname}"
+                               type="text"
+                        />
+                        <p th:errors="*{firstname}" class="text-danger"
+                           th:if="${#fields.hasErrors('firstname')}">
+                        </p>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="form-label">Nom</label>
+                        <input class="form-control"
+                               id="lastName"
+                               name="lastName"
+                               placeholder="Entrer votre nom"
+                               th:field="*{lastname}"
+                               type="text"
+                        />
+                        <p th:errors="*{lastname}" class="text-danger"
+                           th:if="${#fields.hasErrors('lastname')}">
+                        </p>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Email</label>
+                        <input class="form-control"
+                               id="email"
+                               name="email"
+                               placeholder="Entrer l'adresse e-mail"
+                               th:field="*{username}"
+                               type="email"
+                        />
+                        <p th:errors="*{username}" class="text-danger"
+                           th:if="${#fields.hasErrors('username')}">
+                        </p>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Mot de passe</label>
+                        <input class="form-control"
+                               id="password"
+                               name="password"
+                               placeholder="Entrer votre mot passe"
+                               th:field="*{password}"
+                               type="password"
+                        />
+                        <p th:errors="*{password}" class="text-danger"
+                           th:if="${#fields.hasErrors('password')}">
+                        </p>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <button class="btn btn-primary" type="submit">Enregister</button>
+                        <span>Déjà enregistré? <a href="/" th:href="@{/login}">Se connecter
+                             here</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body}, '/static/images/error.png', '', '')}">
+<body>
+
+<h1 class="text-danger text-center fw-bold">La page n'existe pas...</h1>
+<p th:text="${message}">Exception message</p>
+</body>
+
+</html>

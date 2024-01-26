@@ -1,0 +1,48 @@
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body}, '/static/images/arr-plan-training.jpg', 'mon titre', 'monosutitlre')}">
+
+<body>
+
+<!--<body th:replace="common-layout.html :: content">-->
+
+<!-- mon contenu spécifique de la page d'accueil -->
+<h2 class="text-center blue hypertxt fw-bold">NOS FORMATION</h2>
+
+<div class="container divTraining">
+    <div class="row">
+
+        <!-- je boucle sur les catégories -->
+        <div th:each="category : ${categories}" class="col-md-4 custom-column">
+            <h3 th:text="${category.name}"></h3>
+
+            <!-- Tableau des formations de la catégorie actuelle -->
+            <table border="1">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <!--  je Boucle sur les formations de la catégorie actuelle -->
+                <tr th:each="training : ${trainings}" th:if="${training.category.id == category.id}">
+                    <!--                    <td th:text="${training.name}"></td>-->
+                    <td><a th:href="@{/training/{id}(id=${training.id})}" th:text="${training.name}"></a></td>
+                    <td th:text="${training.description}"></td>
+                    <!-- j'ajoute d'autres colonnes en cas de besoin -->
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
+

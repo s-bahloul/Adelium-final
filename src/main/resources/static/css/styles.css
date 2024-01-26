@@ -1,0 +1,260 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    /*font-family: 'Roboto Slab', serif;*/
+    /*font-family: 'Roboto Mono', monospace;*/
+    font-family: 'Poppins', sans-serif;
+   /* overflow: hidden;
+    height: 100vh;
+    position: relative;*/
+}
+/*couleur divColor*/
+.divColor{
+    background-color:lightsteelblue;
+}
+
+
+
+#video-container {
+    position: relative;
+}
+
+#video-background {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+}
+#video-background.video-opacity {
+    opacity:0.9; /*Choisissez la valeur d'opacité souhaitée (0.0 - 1.0) */
+
+
+
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+
+}
+
+.navbar-brand {
+    /*color: #fff;*/
+    /*font-size: 1.5rem;*/
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 10px;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+    /*font-size: 1.4rem;*/
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        margin: 0;
+    }
+
+    .navbar-nav .nav-item {
+        margin: 10px 0;
+
+    }
+}
+/*animation navbar*/
+/*:root {*/
+/*    font-size: 10px;*/
+/*}*/
+
+nav ul {
+    padding: 0;
+    list-style-type: none;
+
+
+}
+
+nav li.navlist{
+    width: 10rem;
+    height: 3rem;
+    font-size: 14px;
+    text-align: center;
+    line-height: 3rem;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    transition: 0.3s;
+    margin: 1rem;
+
+}
+
+nav li.navlist::before,
+nav li.navlist::after {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    top: 0;
+    left: 0;
+    transition: 0.3s;
+}
+
+nav li.navlist::before {
+    background-color: white;
+    z-index: -1;
+    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+nav li.navlist::after {
+    background-color: goldenrod;
+    transform: translate(1.5rem, 1.5rem);
+    z-index: -2;
+}
+
+nav li.navlist:hover {
+    transform: translate(1.5rem, 1.5rem);
+    color: white;
+}
+
+nav li.navlist:hover::before {
+    background-color: goldenrod;
+}
+
+nav li.navlist:hover::after {
+    background-color: white;
+    transform: translate(-1.5rem, -1.5rem);
+}
+
+/*!*!*navbar transparente au début et blanc au défilement*!*!*/
+/*!*.transparent {*!*/
+/*!*    background-color: transparent !important;*!*/
+/*}*/
+
+.bg-white {
+    background-color: white !important;
+}
+
+/*container3*/
+
+.new-card {
+     position: relative;
+     overflow: hidden;
+ }
+
+.new-card img {
+    width: 100%;
+    height: auto;
+}
+
+.new-card .card-body {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+/*bloc nous contacter*/
+ .custom-container {
+     background-color:khaki; /* Couleur "warning" de Bootstrap */
+     padding: 20px;
+     margin-top: 20px;
+     border-radius: 10px;
+ }
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+/*animation des tois carte image */
+.zoom img {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.zoom :hover img {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+}
+/*opacity des images*/
+.opacity-color img {
+    opacity: 1;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.opacity-color :hover img {
+    opacity: .3;
+}
+footer{
+    background-color:midnightblue;
+
+}
+
+/*mettre le couleur bleu*/
+.blue{
+    color:midnightblue;
+
+}
+/*page training*/
+.background-image {
+    /* Ajoutez d'autres styles au besoin */
+    /*background-image: url('/static/images/arr-plan-training.jpg');*/
+    background-size: cover; /* Ajustez cette propriété selon vos préférences */
+    background-position: center center; /* Ajustez cette propriété selon vos préférences */
+    background-repeat: no-repeat;
+    height: 300px;
+
+
+}
+.divTraining{
+    background-image:url("/static/images/fill7.jpg");
+}
+
+/* Style pour la marge en bas de chaque colonne */
+.custom-column {
+    margin-bottom: 20px;
+}
+
+/*animation des liens*/
+.hypertxt {
+    /*color: #0000ff;*/
+    background-size: 0% 100%;
+
+}
+/*animation button*/
+
+
+.hypertxt:hover {
+    text-decoration: none;
+    color:white;
+    background: linear-gradient(to top, transparent 1px 2px, white 2px 3px, transparent 3px, transparent 100%) no-repeat;
+    background-size: 100% 100%;
+    transition: color 1s, background-size 350ms;
+}
+/*animation images page certifivations*/
+.rotate-zoom-out img {
+    -webkit-transform: rotate(10deg) scale(1.25);
+    transform: rotate(10deg) scale(1.25);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.rotate-zoom-out :hover img {
+    -webkit-transform: rotate(0) scale(1);
+    transform: rotate(0) scale(1);
+}
+

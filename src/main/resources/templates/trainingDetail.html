@@ -1,0 +1,31 @@
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body}, '/static/images/fill1.png', 'FORMATION', '')}">
+
+<body>
+
+
+<h2 class=" text-center p-4 blue fw-bold" th:text="${training.name}"></h2>
+
+<div class="container divTraining">
+    <div class="row">
+        <div class="col-md-6">
+        <!-- je boucle sur les catégories -->
+
+                    <div th:text="${training.name}"></div>
+                    <div th:text="${training.description}"></div>
+                    <!-- Ajoutez d'autres colonnes si nécessaire -->
+
+                    <button class="btn btn-primary" onclick="updateTraining()">Mettre à jour</button>
+                    <button class="btn btn-danger" onclick="deleteTraining()">Supprimer</button>
+        </div>
+    </div>
+</div>
+
+<!-- Bouton pour ajouter une nouvelle formation -->
+<div class="text-center p-4">
+    <button class="btn btn-success" onclick="addNewTraining()">Ajouter une nouvelle formation</button>
+</div>
+
+</body>
+</html>
+
