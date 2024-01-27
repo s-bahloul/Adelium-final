@@ -1,17 +1,23 @@
 <html xmlns:th="https://www.thymeleaf.org"
-      th:replace="~{fragments/layout :: layout (~{::body}, '/static/images/arr-plan-training.jpg', 'mon titre', 'monosutitlre')}">
+      th:replace="~{fragments/layout :: layout (~{::body}, '/static/images/contact2.jpg', 'mon titre', 'monosutitlre')}">
 
 
-<div>
+<body>
     <h2>Delete Training</h2>
 
     <p>Are you sure you want to delete the training "<span th:text="${training.name}"></span>"?</p>
 
-    <form th:action="@{'/training/' + ${training.id}}" method="post">
-        <input type="hidden" name="_method" value="DELETE"/>
-        <button type="submit">Confirm Delete</button>
-    </form>
-</div>
+    <div class="container divTraining">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="trainingName" th:text="${training.name}"></div>
+                <div id="trainingDescription" th:text="${training.description}"></div>
+
+                <!-- Utilisez th:href pour définir l'URL à appeler -->
+                <a class="btn btn-danger" th:href="@{/deleteTraining/{id}(id=${training.id})}">Supprimer</a>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

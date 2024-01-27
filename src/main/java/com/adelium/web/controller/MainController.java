@@ -23,11 +23,6 @@ public class MainController {
         return "contact";
     }
 
-    @GetMapping("/training")
-    public String training() {
-        return "training";
-    }
-
     @GetMapping("/contact/success")
     public String success() {
         return "success";
@@ -38,12 +33,12 @@ public class MainController {
         return "addNewTraining";
     }
 
-    @GetMapping("/updateTraninig")
+    @GetMapping("/updateTraninig{id}")
     public String updateTraninig() {
         return "updateTraninig";
     }
 
-    @GetMapping("/deleteTraining")
+    @GetMapping("/deleteTraining{id}")
     public String deleteTraining() {
         return "deleteTraining";
     }

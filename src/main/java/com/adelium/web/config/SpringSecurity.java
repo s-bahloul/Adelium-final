@@ -31,7 +31,7 @@ public class SpringSecurity {
     private static final String[] ADMIN_PAGES = {
             "/users/**",
             "/training/**",
-            "/addNewTraining/**",
+            "/addNewTraining/",
             "/updateTraining/**",
             "/deleteTraining/**",
 

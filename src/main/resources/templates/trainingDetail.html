@@ -6,25 +6,18 @@
 
 <h2 class=" text-center p-4 blue fw-bold" th:text="${training.name}"></h2>
 
-<div class="container divTraining">
-    <div class="row">
-        <div class="col-md-6">
-        <!-- je boucle sur les catégories -->
 
-                    <div th:text="${training.name}"></div>
-                    <div th:text="${training.description}"></div>
-                    <!-- Ajoutez d'autres colonnes si nécessaire -->
+<div class="container divTraining p-5 text-center mt-5">
+    <h2 th:text="${training.name}" id="trainingName"></h2>
+    <p th:text="${training.description}" id="trainingDescription"></p>
 
-                    <button class="btn btn-primary" onclick="updateTraining()">Mettre à jour</button>
-                    <button class="btn btn-danger" onclick="deleteTraining()">Supprimer</button>
-        </div>
+    <div class="btn-group m-5">
+        <a class="btn btn-outline-primary mr-2" th:href="@{/update/{id}(id=${training.id})}">Mettre à jour</a>
+        <a class="btn btn-outline-warning mr-2" th:href="@{/delete/{id}(id=${training.id})}">Supprimer</a>
+        <a class="btn btn-outline-info" th:href="@{/create}">Ajouter une nouvelle formation</a>
     </div>
 </div>
 
-<!-- Bouton pour ajouter une nouvelle formation -->
-<div class="text-center p-4">
-    <button class="btn btn-success" onclick="addNewTraining()">Ajouter une nouvelle formation</button>
-</div>
 
 </body>
 </html>

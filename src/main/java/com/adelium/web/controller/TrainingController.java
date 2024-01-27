@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 @Controller
 @RequestMapping("/training")
 
@@ -32,33 +32,69 @@ public class TrainingController {
     private TrainingService trainingService;
 
     public TrainingController(TrainingService trainingService) {
+
         this.trainingService = trainingService;
     }
 
-    @GetMapping
-    public List<Training> getAllTraining() {
-        return trainingService.getAllTraining();
-    }
+//   @GetMapping
+//    public List<Training> getAllTraining() {
+//
+//        return trainingService.getAllTraining();
+//    }
+//
+//    @GetMapping("/{id}")
+//    public Optional<Training> getTrainingById(@PathVariable Long id) {
+//
+//        return trainingService.getTrainingById(id);
+//    }
 
-    @GetMapping("/{id}")
-    public Optional<Training> getTrainingById(@PathVariable Long id) {
-        return trainingService.getTrainingById(id);
-    }
 
-    @PostMapping
-    public Training addNewTraining(@RequestBody Training newTraining) {
-        return trainingService.addNewTraining(newTraining);
-    }
+@PostMapping("/update/{id}")
+public String updateTraining(@PathVariable Long id, @ModelAttribute Training updatedTraining) {
+    // Mettez à jour la formation avec les nouvelles informations
+    Training updatedTrainingResult = trainingService.updateTraining(id, updatedTraining);
 
-    @PutMapping("/{id}")
-    public Training updateTraining(@PathVariable Long id, @RequestBody Training updatedTraining) {
-        return trainingService.updateTraining(id, updatedTraining);
+    if (updatedTrainingResult != null) {
+        // Redirigez vers la page de détail de la formation mise à jour
+        return "redirect:/training/" + id;
+    } else {
+        // Gérez le cas où la formation n'a pas pu être mise à jour (par exemple, elle n'existe pas)
+        // Vous pouvez rediriger vers une page d'erreur ou traiter d'une autre manière
+        return "redirect:/error";
     }
+}
 
-    @DeleteMapping("/{id}")
-    public void deleteTraining(@PathVariable Long id) {
+    @PostMapping("/deleteTraining/{id}")
+    public String deleteTraining(@PathVariable Long id) {
+        // Supprimez la formation par son ID
         trainingService.deleteTraining(id);
+
+        // Redirigez vers la page principale des formations
+        return "redirect:/training";
     }
+
+    @GetMapping("/create")
+    public String showCreateForm(Model model) {
+        // Récupérez la liste des catégories pour l'afficher dans le formulaire de création
+        List<Category> categories = categoryRepository.findAll();
+        model.addAttribute("categories", categories);
+
+        // Ajoutez un objet Training vide pour lier le formulaire à un nouvel élément
+        model.addAttribute("newTraining", new Training());
+
+        // Retournez la vue du formulaire de création
+        return "createTraining";
+    }
+
+    @PostMapping("/create")
+    public String createTraining(@ModelAttribute Training newTraining) {
+        // Ajoutez la nouvelle formation à la base de données
+        Training createdTraining = trainingService.addNewTraining(newTraining);
+
+        // Redirigez vers la page de détail de la nouvelle formation
+        return "redirect:/training/" + createdTraining.getId();
+    }
+
 
     @GetMapping
     public String showTrainingList(Model model) {
